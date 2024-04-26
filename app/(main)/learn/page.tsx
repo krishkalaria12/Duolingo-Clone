@@ -5,10 +5,11 @@ import FeedWrapper from '@/components/feed-wrapper'
 import StickyWrapper from '@/components/sticky-wrapper'
 import Header from './header'
 import UserProgress from '@/components/user-progress'
-import { getUserProgress } from '@/db/queries'
+import { getUnits, getUserProgress } from '@/db/queries'
 
 async function Learn() {
     const userProgressData = await getUserProgress();
+    const unitsData = await getUnits();
     
     if (!userProgressData || !userProgressData[0]?.activeCourse) {
         redirect("/courses");
